@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles.css'
+import HomePage from './pages/HomePage'
+import Navbar from './components/Navbar'
+import SignUpPage from './pages/Register'
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+
 
 function App() {
+
+  const urlDomain = 'http://localhost'
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+      </div>
+
+  
+      <Switch>
+  
+        <Route exact path="/register" render={() => <SignUpPage />}></Route>
+
+        <Route exact path="/" render={() => <HomePage urlDomain={urlDomain} />}></Route>
+
+      </Switch>
+    </Router>
+    
   );
 }
 
